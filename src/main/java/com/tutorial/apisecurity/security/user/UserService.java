@@ -13,12 +13,7 @@ public class UserService {
       this.userRepository = userRepository;
    }
    
-   public User findUserByUsername(String username) {
-      Optional<User> optUser = userRepository.findByUsername(username);
-
-      if (optUser.isPresent()) {
-         return optUser.get();
-      }
-      return null;
+   public Optional<User> findUserByUsername(String username) {
+      return userRepository.findByUsername(username);
    }
 }

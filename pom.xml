@@ -9,9 +9,9 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.tutorial.apisecurity</groupId>
-	<artifactId>security</artifactId>
+	<artifactId>api_spring_security</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>security</name>
+	<name>api_spring_security</name>
 	<description>A Web Service implementing Books API</description>
 	<properties>
 		<java.version>1.8</java.version>
@@ -40,7 +40,13 @@
 			<artifactId>lombok</artifactId>
 			<scope>provided</scope>
 		</dependency>
+		<!-- The standard Java libraries fail to provide enough methods for manipulation of its core classes. Apache Commons Lang provides these extra methods. -->
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-lang3</artifactId>
+		</dependency>
 
+		<!-- Test Dependecies -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
@@ -51,6 +57,18 @@
 			<artifactId>spring-security-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+		
+		<!-- Spring Data JPA dependencies -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-jpa</artifactId>
+		</dependency>
+		
+		<!-- DB dependencies -->
+		<dependency>
+	        <groupId>mysql</groupId>
+	        <artifactId>mysql-connector-java</artifactId>
+	      </dependency>
 	</dependencies>
 
 	<build>

@@ -11,6 +11,8 @@ import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.web.authentication.www.BasicAuthenticationEntryPoint;
 import org.springframework.stereotype.Component;
 
+import lombok.extern.slf4j.Slf4j;
+
 /**
  * This class will be called if there is error upon authentication using basic authentication. For example, invalid credentials.
  * 
@@ -18,6 +20,7 @@ import org.springframework.stereotype.Component;
  * @email jgbeltran.dev@gmail.com
  */
 @Component
+@Slf4j
 public class BooksWsAuthenticationEntryPoint extends BasicAuthenticationEntryPoint {
 
    @Override
@@ -30,8 +33,10 @@ public class BooksWsAuthenticationEntryPoint extends BasicAuthenticationEntryPoi
    public void commence(HttpServletRequest request, HttpServletResponse response, AuthenticationException authException) throws IOException {
       response.addHeader("WWW-Authenticate", "Basic realm=" + this.getRealmName());
       response.setStatus(HttpStatus.UNAUTHORIZED.value());
+      String errorMsg = "Basic Authentication required. Please supply appropriate credentials.";
       PrintWriter writer = response.getWriter();
-      writer.println("Basic Authentication required. Please supply appropriate credentials.");
+      writer.println(errorMsg);
+      log.warn("Bad Credentials: " + errorMsg);
    }
 
 }

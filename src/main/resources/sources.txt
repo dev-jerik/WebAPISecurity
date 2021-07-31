@@ -1,6 +1,9 @@
 Spring Initializer:
 	- https://start.spring.io/
 	
-application.properties	
+application.properties:
 	- https://www.baeldung.com/spring-profiles
 	- https://docs.spring.io/spring-boot/docs/current/reference/html/appendix-application-properties.html
+
+mysql-in-spring-boot-via-spring-data-jpa-and-hibernate:
+	- https://blog.netgloo.com/2014/10/27/using-mysql-in-spring-boot-via-spring-data-jpa-and-hibernate/
