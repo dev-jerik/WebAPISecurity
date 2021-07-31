@@ -27,7 +27,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
       http.cors()
             .and()
             .csrf().disable()
-            .authorizeRequests().anyRequest().authenticated()
+            .authorizeRequests()
+            .antMatchers("/books/{id}").hasAuthority("book:view")
+            .antMatchers("/books").hasAuthority("book:add")
+            .anyRequest().authenticated()
             .and()
             .httpBasic().authenticationEntryPoint(authenticationEntryPoint);
    }

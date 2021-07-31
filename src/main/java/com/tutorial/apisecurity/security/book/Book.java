@@ -1,9 +1,9 @@
 package com.tutorial.apisecurity.security.book;
 
 import lombok.AllArgsConstructor;
-import lombok.Getter;
+import lombok.Data;
 
-@Getter
+@Data
 @AllArgsConstructor
 public class Book {
    private String bookId;
