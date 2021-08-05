@@ -8,10 +8,12 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
-import com.tutorial.apisecurity.security.authority.Authority;
+import com.tutorial.apisecurity.security.role.Role;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -41,10 +43,10 @@ public class User {
    private boolean enabled;
 
    /*
-    * For simplicity of this application, I use the Eager fetch type to load the authorities immediately upon retrieving the user object. TODO: Change
-    * the FetchType from EAGER to LAZY or just remove the authorities field.
+    * Inserting of data from data.sql to the database does not work if we will not add the joinColumns in the @JoinTable annotation.
     */
-   @ManyToMany(mappedBy = "users", fetch = FetchType.EAGER)
+   @ManyToMany(fetch = FetchType.EAGER)
+   @JoinTable(name = "user_role_link", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
    @ToString.Exclude
-   private Set<Authority> authorities;
+   private Set<Role> roles;
 }

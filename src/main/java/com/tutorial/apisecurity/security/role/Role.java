@@ -1,25 +1,20 @@
-package com.tutorial.apisecurity.security.authority;
+package com.tutorial.apisecurity.security.role;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import org.springframework.security.core.GrantedAuthority;
 
-import com.tutorial.apisecurity.security.role.Role;
-
 import lombok.Data;
-import lombok.EqualsAndHashCode;
 
 @Entity
-@Table(name = "authority")
+@Table(name = "role")
 @Data
-@EqualsAndHashCode(callSuper = false, onlyExplicitlyIncluded = true)
-public class Authority implements GrantedAuthority {
+public class Role implements GrantedAuthority {
    /**
     * 
     */
@@ -27,21 +22,13 @@ public class Authority implements GrantedAuthority {
 
    @Id
    @GeneratedValue(strategy = GenerationType.IDENTITY)
-   @EqualsAndHashCode.Include
    private long id;
 
    @Column(name = "code")
    private String code;
 
-   @Column(name = "description")
-   private String description;
-
-   @ManyToOne
-   private Role role;
-
    @Override
    public String getAuthority() {
       return code;
    }
-
 }

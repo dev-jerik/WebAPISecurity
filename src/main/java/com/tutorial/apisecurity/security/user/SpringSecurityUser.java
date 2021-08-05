@@ -12,14 +12,16 @@ public class SpringSecurityUser implements UserDetails {
     */
    private static final long serialVersionUID = 1L;
    private final User user;
+   private final Collection<GrantedAuthority> authorities;
 
-   public SpringSecurityUser(User user) {
+   public SpringSecurityUser(User user, Collection<GrantedAuthority> authorities) {
       this.user = user;
+      this.authorities = authorities;
    }
 
    @Override
    public Collection<? extends GrantedAuthority> getAuthorities() {
-      return user.getAuthorities();
+      return authorities;
    }
 
    @Override
